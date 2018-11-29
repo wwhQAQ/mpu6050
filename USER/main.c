@@ -51,16 +51,16 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	delay_ms(500);
 	usart1_send(0x01);
-	MPU6050_Init();	
+	MPU6050_Init();	  //初始化
 	usart1_send(0x02);
 	delay_ms(500);
-	while(mpu_dmp_init())
+	while(mpu_dmp_init())  //判断初始化是否成功
 	{
 		usart1_send(0x00);
 	}
 	while(1)
 	{
-		mpu_dmp_get_data(&pitch,&roll,&yaw);
+		mpu_dmp_get_data(&pitch,&roll,&yaw);   //从dmp库中获取最新解算数据
 		data_change_nimingfly((int)(roll*100),(int)(pitch*100),(int)(yaw*10),dat);
 		niming_report(0xAF,dat,28);		
 	}

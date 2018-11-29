@@ -22,10 +22,7 @@ void MPU6050_Init(void)
 	
 	MPU6050_Frequency(50);								//4.其他设置 ，设置陀螺仪采样频率为50HZ
 		delay_ms(100);
-	
 
-
-	
 	MPU6050_Write_OneByte(MPU6050ADDR,INTREGADDR,0x00);//设置为关闭所有中断。
 		delay_ms(100);
 	
@@ -120,21 +117,6 @@ u8 MPU6050_Read_OneByte(u8 addr,u8 regaddr)
 	IIC_Stop();
 	return tempdat;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 u8 MPU6050_Read_Len(u8 addr,u8 regaddr,u8 len,u8 *buf)
 {	
